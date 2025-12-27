@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday</title>
+  <!-- Google Font for cursive style -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Comic Sans MS", cursive;
+      text-align: center;
+      overflow: hidden;
+    }
+    .page {
+      display: none;
+      height: 100vh;
+      width: 100vw;
+      padding: 20px;
+      box-sizing: border-box;
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: white;
+    }
+    .active {
+      display: block;
+      animation: fadeIn 1s;
+    }
+    h1 {
+      font-size: 40px;
+      text-shadow: 2px 2px #000;
+    }
+    p {
+      font-size: 28px;
+      margin-top: 20px;
+      line-height: 1.6;
+      font-family: 'Great Vibes', cursive; /* cursive quotes */
+      color: #fffaf0;
+    }
+    /* Moving background text */
+    .background-text {
+      position: absolute;
+      top: 10%;
+      left: -100%;
+      font-size: 80px;
+      color: rgba(255,255,255,0.15);
+      white-space: nowrap;
+      animation: moveText 15s linear infinite;
+    }
+    @keyframes moveText {
+      from { left: -100%; }
+      to { left: 100%; }
+    }
+    /* Floating emojis */
+    .emoji {
+      font-size: 50px;
+      position: absolute;
+      animation: float 10s infinite linear;
+    }
+    @keyframes float {
+      0% { transform: translateY(100vh); }
+      100% { transform: translateY(-120vh); }
+    }
+    /* Fireworks effect */
+    .firework {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: yellow;
+      border-radius: 50%;
+      animation: explode 1.5s ease-out infinite;
+    }
+    @keyframes explode {
+      0% { transform: scale(0.2); opacity: 1; }
+      100% { transform: scale(3); opacity: 0; }
+    }
+    .nav {
+      position: fixed;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+    }
+    button {
+      background: #ff69b4;
+      border: none;
+      padding: 12px 20px;
+      margin: 5px;
+      font-size: 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      color: white;
+    }
+    button:hover {
+      background: #db7093;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page 1: Balloons -->
+  <div class="page active" style="background: linear-gradient(to right, #ff7eb9, #ff65a3);">
+    <div class="background-text">Happy Birthday</div>
+    <h1>🎈 Happy Birthday My Love 🎈</h1>
+    <p>“Tere janamdin pe dua hai meri,<br>
+       Khushiyo se bhari rahe zindagi teri.<br>
+       Har pal me ho pyar ka rang,<br>
+       Tu rahe sada meri dhadkan ke sang 💖”</p>
+  </div>
+
+  <!-- Page 2: Fireworks -->
+  <div class="page" style="background: linear-gradient(to right, #000428, #004e92);">
+    <div class="background-text">Happy Birthday</div>
+    <h1>🎆 Fireworks of Love 🎆</h1>
+    <p>“Tere janamdin pe khilte rahe rangin patakhe,<br>
+       Har pal ho tera roshan aur pyar se bhara 💖”</p>
+    <div class="firework" style="top:40%; left:30%;"></div>
+    <div class="firework" style="top:60%; left:50%;"></div>
+    <div class="firework" style="top:30%; left:70%;"></div>
+  </div>
+
+  <!-- Page 3: Hearts -->
+  <div class="page" style="background: linear-gradient(to right, #fbc2eb, #a6c1ee);">
+    <div class="background-text">Happy Birthday</div>
+    <h1>❤️ Hearts of Happiness ❤️</h1>
+    <p>“Janamdin pe tere khilte rahe pyar ke phool,<br>
+       Har din ho tera gulabi aur cool.<br>
+       Dil se nikalti hai bas yeh dua,<br>
+       Tu rahe meri mohabbat ka sabse khoobsurat silsila ❤️”</p>
+  </div>
+
+  <!-- Page 4: Kisses -->
+  <div class="page" style="background: linear-gradient(to right, #84fab0, #8fd3f4);">
+    <div class="background-text">Happy Birthday</div>
+    <h1>💋 Kisses & Forever Love 💋</h1>
+    <p>“Janamdin pe tere sajti rahe khushiyo ki mehfil,<br>
+       Har pal ho tera rangin aur dilkash manzil.<br>
+       Tu meri zindagi ka sabse khoobsurat phool,<br>
+       Happy Birthday meri jaan, meri duniya ka rule 💋💖”</p>
+  </div>
+
+  <!-- Navigation -->
+  <div class="nav">
+    <button onclick="prevPage()">⬅️ Previous</button>
+    <button onclick="nextPage()">Next ➡️</button>
+  </div>
+
+  <script>
+    let current = 0;
+    const pages = document.querySelectorAll('.page');
+
+    function showPage(index) {
+      pages.forEach((p, i) => {
+        p.classList.remove('active');
+        if (i === index) p.classList.add('active');
+      });
+      addEmojis(pages[index], index);
+    }
+
+    function nextPage() {
+      current = (current + 1) % pages.length;
+      showPage(current);
+    }
+
+    function prevPage() {
+      current = (current - 1 + pages.length) % pages.length;
+      showPage(current);
+    }
+
+    // 🎈 Add emojis dynamically based on page theme
+    function addEmojis(page, index) {
+      page.querySelectorAll('.emoji').forEach(e => e.remove());
+      let symbols = [];
+      if(index === 0) symbols = ['🎈','🎈','🎈']; // balloons
+      if(index === 2) symbols = ['❤️','💖','💕']; // hearts
+      if(index === 3) symbols = ['💋','😘','😍']; // kisses
+
+      symbols.forEach(sym => {
+        for (let i = 0; i < 10; i++) {
+          let emoji = document.createElement('div');
+          emoji.className = 'emoji';
+          emoji.innerText = sym;
+          emoji.style.left = Math.random() * 90 + '%';
+          emoji.style.animationDuration = (6 + Math.random() * 5) + 's';
+          page.appendChild(emoji);
+        }
+      });
+    }
+
+    // Initialize emojis on first page
+    addEmojis(pages[0],0);
+  </script>
+</body>
+</html>
