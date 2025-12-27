@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Birthday My Love</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* Global theme */
+    :root {
+      --text: #ffffff;
+    }
+    body {
+      margin: 0;
+      font-family: 'Brush Script MT', cursive;
+      color: var(--text);
+      text-align: center;
+      overflow: hidden;
+      /* Changing party theme background */
+      animation: partyTheme 20s linear infinite;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    }
+    @keyframes partyTheme {
+      0%   { background: radial-gradient(circle at 20% 20%, #ff9a9e, #fad0c4); }
+      25%  { background: radial-gradient(circle at 80% 30%, #f6d365, #fda085); }
+      50%  { background: radial-gradient(circle at 50% 80%, #a18cd1, #fbc2eb); }
+      75%  { background: radial-gradient(circle at 30% 60%, #84fab0, #8fd3f4); }
+      100% { background: radial-gradient(circle at 70% 20%, #ff9a9e, #fad0c4); }
+    }
+
+    /* Layering */
+    .content { position: relative; z-index: 2; }
+    #fireworks { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
+
+    /* Headline glow */
+    h1 {
+      margin: 30px 0 10px;
+      font-size: 3.6em;
+      text-shadow: 0 0 12px #fff, 0 0 24px #ff77, 0 0 40px #f06;
+      animation: headlineGlow 2s ease-in-out infinite alternate;
+    }
+    @keyframes headlineGlow {
+      from { text-shadow: 0 0 10px #fff, 0 0 20px #ff0; }
+      to   { text-shadow: 0 0 20px #fff, 0 0 40px #ff3; }
+    }
+
+    /* Message block */
+    .message {
+      margin: 8px auto 20px;
+      max-width: 900px;
+      font-size: 2.1em;
+      line-height: 1.5;
+    }
+    .line { display: inline-block; padding: 6px 12px; animation: textGlow 2.5s ease-in-out infinite alternate; }
+    @keyframes textGlow {
+      from { color: #fff; text-shadow: 0 0 8px #fff, 0 0 16px #ff66aa; }
+      to   { color: #ffeb99; text-shadow: 0 0 12px #ffe, 0 0 28px #ff99cc; }
+    }
+
+    /* Photo card */
+    .photo {
+      margin: 18px auto;
+      width: 320px;
+      max-width: 80vw;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35), 0 0 24px rgba(255,255,255,0.3);
+      animation: photoPulse 6s ease-in-out infinite;
+    }
+    @keyframes photoPulse {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.03); }
+    }
+
+    /* Footer tag */
+    .footer {
+      margin: 22px 0 32px;
+      font-size: 2.2em;
+      animation: textGlow 2s ease-in-out infinite alternate;
+    }
+
+    /* Moving big emojis (5em) */
+    .emoji {
+      position: absolute;
+      font-size: 5em; /* requested size */
+      z-index: 3;
+      animation: floatUp 12s linear infinite;
+      opacity: 0.9;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
+      10%  { opacity: 1; }
+      50%  { transform: translateY(40vh) translateX(10px) rotate(10deg); }
+      100% { transform: translateY(-20vh) translateX(-10px) rotate(-10deg); opacity: 0; }
+    }
+
+    /* Subtle sparkles over text */
+    .sparkle {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+      width: 70%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <!-- Fireworks canvas -->
+  <canvas id="fireworks"></canvas>
+
+  <div class="content">
+    <h1>🎉 Happy Birthday My Love 🎉</h1>
+
+    <div class="message">
+      <div class="line">💖 My baby, my babu, my baccha 💖</div><br />
+      <div class="line">Today you become 22 years old 🎂✨ — my brightest star 🌟</div><br />
+      <div class="line">May your year be full of giggles, kisses, and soft sunshine 💋🌈</div><br />
+      <div class="line">You are my home, my joy, my forever heartbeat ❤️</div><br />
+      <div class="line">yours, Shubham — with endless love 💋💋💋</div>
+    </div>
+
+    <!-- One photo (set to 1.jpeg as requested) -->
+    <img class="photo" id="slideshow" src="1.jpeg" alt="My Love" />
+
+    <!-- Background music -->
+    <audio autoplay loop>
+      <source src="song.mp3" type="audio/mpeg" />
+    </audio>
+
+    <div class="footer">💖 Forever yours, now and always 💖</div>
+  </div>
+
+  <!-- Big moving emojis: balloons, lips, hearts, firecrackers -->
+  <!-- Position them across the screen with different delays -->
+  <div class="emoji" style="left:5%;  animation-delay:0s;">🎈</div>
+  <div class="emoji" style="left:15%; animation-delay:2s;">💋</div>
+  <div class="emoji" style="left:25%; animation-delay:4s;">❤️</div>
+  <div class="emoji" style="left:35%; animation-delay:1s;">🎆</div>
+  <div class="emoji" style="left:45%; animation-delay:3s;">🎈</div>
+  <div class="emoji" style="left:55%; animation-delay:5s;">💋</div>
+  <div class="emoji" style="left:65%; animation-delay:0.5s;">❤️</div>
+  <div class="emoji" style="left:75%; animation-delay:2.5s;">🎆</div>
+  <div class="emoji" style="left:85%; animation-delay:4.5s;">🎈</div>
+  <div class="emoji" style="left:92%; animation-delay:6s;">💋</div>
+
+  <!-- Optional sparkles layer (visual polish) -->
+  <div class="sparkle"></div>
+
+  <script>
+    /* Simple 1-photo setup (you asked: only 1.jpeg) */
+    // If you later add more, replace images array and enable the interval.
+    const images = ["1.jpeg"];
+    let index = 0;
+    // Example if you add more:
+    // setInterval(() => {
+    //   index = (index + 1) % images.length;
+    //   document.getElementById("slideshow").src = images[index];
+    // }, 3000);
+
+    /* Fireworks effect using Canvas */
+    const canvas = document.getElementById("fireworks");
+    const ctx = canvas.getContext("2d");
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    const particles = [];
+    const colors = ["#ff0", "#f06", "#0ff", "#fff", "#f0f", "#ff9", "#9ff"];
+
+    function rand(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function createFirework(x, y) {
+      const count = 60;
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x, y,
+          vx: Math.cos((i / count) * Math.PI * 2) * rand(2, 6),
+          vy: Math.sin((i / count) * Math.PI * 2) * rand(2, 6),
+          life: rand(50, 100),
+          r: rand(1.5, 3.5),
+          color: colors[Math.floor(Math.random() * colors.length)]
+        });
+      }
+    }
+
+    function updateFireworks() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.02; // slight gravity
+        p.life--;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+        if (p.life <= 0) particles.splice(i, 1);
+      }
+      requestAnimationFrame(updateFireworks);
+    }
+    updateFireworks();
+
+    // Auto fireworks bursts across the screen
+    setInterval(() => {
+      createFirework(rand(100, canvas.width - 100), rand(100, canvas.height - 200));
+    }, 1300);
+
+    // Tap/click to blast extra fireworks
+    window.addEventListener("click", (e) => {
+      createFirework(e.clientX, e.clientY);
+    });
+  </script>
+</body>
+</html>
